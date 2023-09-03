@@ -11,7 +11,7 @@ const CountdownTimer = () => {
   let intervalId;
 
   const handleInputChange = (event) => {
-    const newValue = parseInt(event.target.value); // Parsear a número entero
+    const newValue = parseInt(event.target.value); 
     setInitialCount(isNaN(newValue) ? 0 : newValue); // Si no es un número válido, establecer en 0
   };
 
@@ -43,7 +43,7 @@ const CountdownTimer = () => {
       clearInterval(intervalId);
     } else if (count === 0) {
       // Mostrar una alerta cuando el contador llega a 0
-      alert("¡Contador llegó a 0!");
+      alert("¡Tu contador llegó a 0!");
     }
   }, [isRunning, count]);
 
@@ -59,25 +59,55 @@ const CountdownTimer = () => {
 
   return (
     <>
-      {isRunning ? (
-        <>
-          <button onClick={handleStopClick}>Detener</button>
-          <button onClick={handleRestartClick}>Reiniciar</button>
-        </>
-      ) : (
-        <>
-          <button disabled>Detenido</button>
-          <button onClick={handleResumeClick}>Reanudar</button>
-        </>
-      )}
-      <div className="inputContainer">
-        <label>Ingresa un valor para el countdown</label> &nbsp;&nbsp;
-        <input
-          type="number"
-          value={initialCount}
-          onChange={handleInputChange}
-          placeholder="Ingresa un valor inicial"
-        />
+      <div className="containerEverything">
+        <div className="inputContainer">
+          <div>
+            <label>Ingresa un valor para el countdown</label> &nbsp;&nbsp;
+            <input
+              type="number"
+              value={initialCount}
+              onChange={handleInputChange}
+              placeholder="Ingresa un valor inicial"
+            />
+          </div>
+          <div>
+            {isRunning ? (
+              <>
+                <button
+                  type="button"
+                  className="btn btn-warning btn-sm me-2"
+                  onClick={handleStopClick}
+                >
+                  Detener
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-danger btn-sm"
+                  onClick={handleRestartClick}
+                >
+                  Reiniciar
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className="btn btn-secondary btn-sm me-2"
+                  disabled
+                >
+                  Detenido
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-success btn-sm"
+                  onClick={handleResumeClick}
+                >
+                  Reanudar
+                </button>
+              </>
+            )}
+          </div>
+        </div>
       </div>
       <div className="containerCountdown">
         <div className="countdownValue">{count}</div>
@@ -85,6 +115,5 @@ const CountdownTimer = () => {
     </>
   );
 };
-
 
 export default CountdownTimer;
