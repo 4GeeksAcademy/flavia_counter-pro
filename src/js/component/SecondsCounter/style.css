@@ -1,0 +1,20 @@
+.bigContainer {
+    text-align: center;
+    background-color: black;
+    margin: 50px;
+    border: rgb(72, 27, 27) solid 5px;
+    padding: 15px;
+}
+
+.bigContainer div{
+    background-color: rgb(27, 26, 26);
+    display: inline-block;
+    font-size: 30px;
+    line-height: 30px;
+    color: white;
+    padding: 20px;
+    margin: 3px;
+    border: gray solid 1px;
+    border-radius: 20%;
+    box-shadow:  2px 5px 5px grey;
+}
